@@ -29,12 +29,12 @@ public class Main extends AppCompatActivity {
 
 
     //speed of views moving
-    private final int HUMAN_SPEED=20;
-    private final int ALIEN_SPEED=30;
-    private final int SHIELD_SPEED=25;
-    private final int SUPERMAN_SPEED=20;
-    private final int HUMAN_SCORE=20;
-    private final int TIMER_INTERVAL=50;
+    private static final int HUMAN_SPEED=20;
+    private static final int ALIEN_SPEED=30;
+    private static final int SHIELD_SPEED=25;
+    private static final int SUPERMAN_SPEED=20;
+    private static final int HUMAN_SCORE=20;
+    private static final int TIMER_INTERVAL=50;
 
     private int supermanSize;
     private int screenWidth;
