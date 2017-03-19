@@ -18,7 +18,6 @@ public class Result extends AppCompatActivity {
         TextView scoreLabel =(TextView) findViewById(R.id.scoreLabel);
         TextView highScoreLabel =(TextView) findViewById(R.id.highScoreLabel);
 
-//        int score = getIntent().getIntExtra("SCORE", 0);
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             int score = extras.getInt("SCORE");
@@ -43,6 +42,10 @@ public class Result extends AppCompatActivity {
         }
     }
 
+    /**
+     * start the game again
+     * @param view view
+     */
     public void tryAgain(View view){
         startActivity(new Intent(getApplicationContext(),Main.class));
     }

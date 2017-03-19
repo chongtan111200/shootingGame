@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/background"
+    tools:context="com.example.chongtian.catching_game.Main"
+    >
+
+    <TextView
+        android:id="@+id/scoreLabel"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="@string/score100"
+        android:textSize="18sp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingEnd="10dp"
+        android:paddingStart="10dp"
+        android:gravity="center_vertical"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toTopOf="@+id/frame"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp" />
+
+    <FrameLayout
+        android:id="@+id/frame"
+        android:layout_width="0dp"
+        android:layout_height="501dp"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp">
+
+        <TextView
+            android:id="@+id/startLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/startGame"
+            android:textSize="30sp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="130dp" />
+
+        <ImageView
+            android:id="@+id/superman"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/superman"
+            android:layout_gravity="bottom" />
+
+
+        <ImageView
+            android:id="@+id/alien"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:contentDescription="@string/orange"
+            android:src="@drawable/alien" />
+
+        <ImageView
+            android:id="@+id/human"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:contentDescription="@string/pink"
+            android:src="@drawable/human" />
+
+        <ImageView
+            android:id="@+id/shield"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:contentDescription="@string/orange"
+            android:src="@drawable/shield" />
+
+
+    </FrameLayout>
+
+</android.support.constraint.ConstraintLayout>

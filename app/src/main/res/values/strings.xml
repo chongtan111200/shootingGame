@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Catching_Game</string>
+    <string name="box">box</string>
+    <string name="orange">orange</string>
+    <string name="black">black</string>
+    <string name="pink">pink</string>
+    <string name="score100">Score: 100</string>
+    <string name="score">Score: %d</string>
+    <string name="startGame">Start Game</string>
+    <string name="stopGame">Game Over!</string>
+    <string name="highscore">High Score %d</string>
+    <string name="tryagain">Try Again!</string>
+    <string name="welcomeMessage">Welcome to my game</string>
+    <string name="pinkPoints">20 points</string>
+    <string name="orangePoints">30 points</string>
+
+
+</resources>
