@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.chongtian.catching_game.Result"
     android:orientation="vertical"
-    android:gravity="center">
+    >
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/stopGame"
         android:textSize="30sp"
-        />
+        android:id="@+id/textView"
+        android:layout_marginTop="46dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:id="@+id/scoreLabel"
@@ -21,8 +24,9 @@
         android:layout_height="wrap_content"
         android:text="@string/score"
         android:textSize="20sp"
-        android:layout_marginTop="50dp"
-        />
+        android:layout_marginTop="61dp"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:id="@+id/highScoreLabel"
@@ -30,15 +34,17 @@
         android:layout_height="wrap_content"
         android:text="@string/highscore"
         android:textSize="20sp"
-        android:layout_marginTop="50dp"
-        />
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="250dp"
+        android:layout_centerHorizontal="true"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
         android:text="@string/tryagain"
-        android:textAllCaps="false"
         android:onClick="tryAgain"
-        />
-</LinearLayout>
+        android:id="@+id/button"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="98dp" />
+</RelativeLayout>

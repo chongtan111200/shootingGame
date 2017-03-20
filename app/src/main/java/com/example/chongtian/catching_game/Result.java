@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 public class Result extends AppCompatActivity {
 
+    private static final String TAG="Result Activity";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +40,7 @@ public class Result extends AppCompatActivity {
             highScoreLabel.setText(getString(R.string.highscore,score));
         }
         }else{
-            Log.e("Result","no intent found");
+            Log.e(TAG,"no intent found");
         }
     }
 

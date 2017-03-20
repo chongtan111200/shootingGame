@@ -145,24 +145,24 @@ public class Main extends AppCompatActivity {
      */
     void hitCheck(){
 
-        //if human hit superman, get points
+        //if human hits superman, get points
         if(checkOverlap(human,superman)){
             sound.playHitSound();
             score+=HUMAN_SCORE;
             human.setY(screenHeight+10);
         }
 
-        //if alien hit superman, game over
+        //if alien hits superman, game over
         if(checkOverlap(alien,superman)){
             gameOver();
         }
 
-        //if shield hit human, game over
+        //if shield hits human, game over
         if(checkOverlap(shield,human)){
             gameOver();
         }
 
-        //if shield hit alien, get points
+        //if shield hits alien, get points
         if(checkOverlap(shield,alien)){
             sound.playHitSound();
             score+=HUMAN_SCORE;
@@ -171,6 +171,11 @@ public class Main extends AppCompatActivity {
         }
     }
 
+    /**
+     * game over function
+     * stop timer, show the result
+     * start the result activity
+     */
     void gameOver(){
         sound.playOverSound();
         timer.cancel();
@@ -183,7 +188,7 @@ public class Main extends AppCompatActivity {
 
 
     /**
-     * check if views are over laping
+     * check if views are overlapping
      * @param view1 first view
      * @param view2 second view
      * @return true if overlapped
@@ -206,7 +211,7 @@ public class Main extends AppCompatActivity {
         int view2Xright=view2Xleft+view2.getWidth();
         int view2Ybottom=view2Ytop+view2.getHeight();
 
-        //overlap condition
+        //overlap condition, view1 must have x and y partly overlap with view2
         return(view1Xright>view2Xleft && view1Xleft<view2Xright)&&
                 (view1Ybottom>view2Ytop && view1Ytop<view2Ybottom);
     }
@@ -258,5 +263,13 @@ public class Main extends AppCompatActivity {
             }
         }
         return super.onTouchEvent(event);
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        savedInstanceState.putInt("Score", score);
+        savedInstanceState.putInt("supermanX", (int)superman.getX());
+        savedInstanceState.putInt("supermanY", (int)superman.getY());
     }
 }
