@@ -32,39 +32,54 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp" />
+        android:layout_marginRight="8dp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintVertical_bias="1.0" />
+
+
+    <LinearLayout
+        android:layout_width="350dp"
+        android:layout_height="350dp"
+        android:id="@+id/fragment_container"
+
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="153dp"
+        android:layout_marginLeft="40dp"
+        app:layout_constraintLeft_toLeftOf="@+id/frame" />
 
     <FrameLayout
         android:id="@+id/frame"
         android:layout_width="0dp"
         android:layout_height="501dp"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_constraintBottom_creator="1"
+        android:layout_marginBottom="-13dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        tools:layout_constraintLeft_creator="1"
-        android:layout_marginBottom="8dp"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp">
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1">
 
         <TextView
             android:id="@+id/startLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/startGame"
-            android:textSize="30sp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="130dp" />
+            android:layout_marginTop="130dp"
+            android:text="@string/startGame"
+            android:textSize="30sp" />
 
         <ImageView
             android:id="@+id/superman"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:src="@drawable/superman"
-            android:layout_gravity="bottom" />
+            android:layout_gravity="bottom"
+            android:src="@drawable/superman" />
 
 
         <ImageView
@@ -75,20 +90,20 @@
             android:src="@drawable/alien" />
 
         <ImageView
-            android:id="@+id/human"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:contentDescription="@string/pink"
-            android:src="@drawable/human" />
-
-        <ImageView
             android:id="@+id/shield"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:contentDescription="@string/orange"
             android:src="@drawable/shield" />
 
+        <ImageView
+            android:id="@+id/human"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:contentDescription="@string/pink"
+            android:src="@drawable/human" />
 
     </FrameLayout>
+
 
 </android.support.constraint.ConstraintLayout>

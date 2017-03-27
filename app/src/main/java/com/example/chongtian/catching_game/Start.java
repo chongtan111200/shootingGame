@@ -14,6 +14,11 @@ public class Start extends AppCompatActivity {
         setContentView(R.layout.activity_start);
     }
 
+    /**
+     * to be called when the start button is clicked
+     * start the main activity and add the fragment
+     * @param view
+     */
     public void startGame(View view){
         startActivity(new Intent(getApplicationContext(), Main.class));
     }

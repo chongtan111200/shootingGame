@@ -13,6 +13,10 @@
     <string name="welcomeMessage">Welcome to my game</string>
     <string name="pinkPoints">20 points</string>
     <string name="orangePoints">30 points</string>
+    <string name="up">Up</string>
+    <string name="down">Down</string>
+    <string name="left">Left</string>
+    <string name="right">Right</string>
 
 
 </resources>

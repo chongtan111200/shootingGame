@@ -3,11 +3,14 @@ package com.example.chongtian.catching_game;
 import android.content.Intent;
 import android.graphics.Point;
 import android.os.Handler;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.view.Display;
@@ -17,7 +20,7 @@ import java.util.TimerTask;
 
 
 
-public class Main extends AppCompatActivity {
+public class Main extends AppCompatActivity implements ControlButtonFragment.OnControlChanged{
 
     //fields for the views
     private TextView scoreLabel;
@@ -29,10 +32,10 @@ public class Main extends AppCompatActivity {
 
 
     //speed of views moving
-    private static final int HUMAN_SPEED=20;
-    private static final int ALIEN_SPEED=30;
-    private static final int SHIELD_SPEED=25;
-    private static final int SUPERMAN_SPEED=20;
+    private static final int HUMAN_SPEED=5;
+    private static final int ALIEN_SPEED=5;
+    private static final int SHIELD_SPEED=5;
+    private static final int SUPERMAN_SPEED=10;
     private static final int HUMAN_SCORE=20;
     private static final int TIMER_INTERVAL=50;
 
@@ -45,14 +48,23 @@ public class Main extends AppCompatActivity {
     private Timer timer = new Timer();
     private SoundPlayer sound;
 
-    private boolean action_flag = false;
+//    private boolean action_flag = false;
+    private int direction;//1 left, 2 down, 3 right, 4 up
     private boolean start_flag=false;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ControlButtonFragment cbFragment = new ControlButtonFragment();
+        FragmentManager fragManager = getSupportFragmentManager();
+        FragmentTransaction transaction =
+                fragManager.beginTransaction();
+        transaction.add(R.id.fragment_container, cbFragment);
+        transaction.commit();
 
         //initialization
         scoreLabel= (TextView) findViewById(R.id.scoreLabel);
@@ -61,6 +73,7 @@ public class Main extends AppCompatActivity {
         shield=(ImageView) findViewById(R.id.shield);
         alien=(ImageView) findViewById(R.id.alien);
         human=(ImageView) findViewById(R.id.human);
+
         sound = new SoundPlayer(this);
 
         //get screen size
@@ -82,6 +95,10 @@ public class Main extends AppCompatActivity {
         scoreLabel.setText(getString(R.string.score,0));
     }
 
+    @Override
+    public void onControlChanged(int direction){
+        this.direction=direction;
+    }
 
     /**
      * update all the view motions and check if they hit each other
@@ -107,17 +124,25 @@ public class Main extends AppCompatActivity {
         shield.setX(curShieldX);
 
         int cursupermanX=(int)superman.getX();
+        int cursupermanY=(int)superman.getY();
         //move the superman
-        if(action_flag){
+        if(direction==1){
+            cursupermanX +=SUPERMAN_SPEED;
+        }else if(direction==2){
+            cursupermanY +=SUPERMAN_SPEED;
+        }else if(direction==3){
             cursupermanX -=SUPERMAN_SPEED;
         }else{
-            cursupermanX +=SUPERMAN_SPEED;
+            cursupermanY -=SUPERMAN_SPEED;
         }
 
         //keep the superman inside the frame
         if(cursupermanX < 0) cursupermanX = 0;
         if(cursupermanX > screenWidth-supermanSize) cursupermanX = screenWidth-supermanSize;
+        if(cursupermanY < 0) cursupermanY=0;
+        if(cursupermanY > screenHeight) cursupermanY = screenHeight;
         superman.setX(cursupermanX);
+        superman.setY(cursupermanY);
 
         scoreLabel.setText(getString(R.string.score, score));
     }
@@ -255,12 +280,6 @@ public class Main extends AppCompatActivity {
             },0,TIMER_INTERVAL);
 
 
-        }else {
-            if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                action_flag = true;
-            } else if (event.getAction() == MotionEvent.ACTION_UP) {
-                action_flag = false;
-            }
         }
         return super.onTouchEvent(event);
     }
