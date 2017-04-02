@@ -17,7 +17,15 @@
             </intent-filter>
         </activity>
         <activity android:name=".Result" />
-        <activity android:name=".Main"></activity>
+        <activity android:name=".Main" />
+        <activity android:name=".StoryLine" />
+        <activity android:name=".ShareStory"></activity>
+
+        <provider android:name="com.example.chongtian.catching_game.StoryProvider"
+            android:authorities="com.chongtian.catching_game.MyContentProvider"
+            android:enabled="true"
+            android:exported="true" >
+        </provider>
     </application>
 
 </manifest>

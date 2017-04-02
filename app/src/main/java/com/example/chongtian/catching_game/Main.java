@@ -1,12 +1,14 @@
 package com.example.chongtian.catching_game;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Point;
 import android.os.Handler;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
@@ -29,7 +31,7 @@ public class Main extends AppCompatActivity implements ControlButtonFragment.OnC
     private ImageView shield;
     private ImageView alien;
     private ImageView human;
-
+    private Button muteButton;
 
     //speed of views moving
     private static final int HUMAN_SPEED=5;
@@ -38,11 +40,13 @@ public class Main extends AppCompatActivity implements ControlButtonFragment.OnC
     private static final int SUPERMAN_SPEED=10;
     private static final int HUMAN_SCORE=20;
     private static final int TIMER_INTERVAL=50;
+    public static final String PREFS_NAME = "GameSetUpFile";
 
     private int supermanSize;
     private int screenWidth;
     private int screenHeight;
     private int score=0;
+    private boolean muteSound;
 
     private Handler handler = new Handler();
     private Timer timer = new Timer();
@@ -73,8 +77,27 @@ public class Main extends AppCompatActivity implements ControlButtonFragment.OnC
         shield=(ImageView) findViewById(R.id.shield);
         alien=(ImageView) findViewById(R.id.alien);
         human=(ImageView) findViewById(R.id.human);
+        muteButton=(Button) findViewById(R.id.muteButton);
 
+
+        final SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+        muteSound = settings.getBoolean("silentMode", false);
+
+        muteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                muteSound=!muteSound;
+                setSound(muteSound);
+                SharedPreferences.Editor editor = settings.edit();
+                editor.putBoolean("silentMode", muteSound);
+                editor.commit();
+            }
+        });
+
+        //start the backgrond music
         sound = new SoundPlayer(this);
+
+
 
         //get screen size
         WindowManager wm = getWindowManager();
@@ -93,6 +116,17 @@ public class Main extends AppCompatActivity implements ControlButtonFragment.OnC
         shield.setY(-100.0f);
 
         scoreLabel.setText(getString(R.string.score,0));
+    }
+
+    //set if the sound should be played
+    private void setSound(boolean mute){
+        if(mute){
+            muteButton.setText(R.string.unmute);
+            sound.pauseBackground();
+        }else{
+            muteButton.setText(R.string.mute);
+            sound.resumeBackground();
+        }
     }
 
     @Override
@@ -140,7 +174,7 @@ public class Main extends AppCompatActivity implements ControlButtonFragment.OnC
         if(cursupermanX < 0) cursupermanX = 0;
         if(cursupermanX > screenWidth-supermanSize) cursupermanX = screenWidth-supermanSize;
         if(cursupermanY < 0) cursupermanY=0;
-        if(cursupermanY > screenHeight) cursupermanY = screenHeight;
+        if(cursupermanY > screenHeight-supermanSize) cursupermanY = screenHeight-supermanSize;
         superman.setX(cursupermanX);
         superman.setY(cursupermanY);
 
@@ -251,6 +285,7 @@ public class Main extends AppCompatActivity implements ControlButtonFragment.OnC
 
         if(!start_flag){
             start_flag=true;
+            sound.playBackground();
 
             //set up the starting location of all the views
             int beginSupermanX = (int)superman.getX();
@@ -278,8 +313,6 @@ public class Main extends AppCompatActivity implements ControlButtonFragment.OnC
                     });
                 }
             },0,TIMER_INTERVAL);
-
-
         }
         return super.onTouchEvent(event);
     }

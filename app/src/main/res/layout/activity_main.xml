@@ -41,7 +41,6 @@
         android:layout_width="350dp"
         android:layout_height="350dp"
         android:id="@+id/fragment_container"
-
         android:orientation="vertical"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="153dp"
@@ -104,6 +103,16 @@
             android:src="@drawable/human" />
 
     </FrameLayout>
+
+    <Button
+        android:id="@+id/muteButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/mute"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="17dp"
+        app:layout_constraintRight_toRightOf="@+id/scoreLabel" />
 
 
 </android.support.constraint.ConstraintLayout>

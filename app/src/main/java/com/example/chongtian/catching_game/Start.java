@@ -19,11 +19,27 @@ public class Start extends AppCompatActivity {
      * start the main activity and add the fragment
      * @param view
      */
-    public void startGame(View view){
+    void startGame(View view){
         startActivity(new Intent(getApplicationContext(), Main.class));
     }
 
+    /**
+     * to be called when the story button is clicked
+     * start the story line view activity
+     * @param view
+     */
+    void startStory(View view){
+        startActivity(new Intent(getApplicationContext(), StoryLine.class));
+    }
 
+    /**
+     * to be called when the share story button is clicked
+     * start the share story activity
+     * @param view
+     */
+    void startShareStory(View view){
+        startActivity(new Intent(getApplicationContext(), ShareStory.class));
+    }
 
     @Override
     public boolean dispatchKeyEvent(KeyEvent event) {

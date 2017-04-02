@@ -1,17 +1,23 @@
 package com.example.chongtian.catching_game;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import java.io.File;
+import java.io.FileOutputStream;
+
 public class Result extends AppCompatActivity {
 
     private static final String TAG="Result Activity";
-
+    private static FileOutputStream outputStream;
+    private static int score;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,7 +28,7 @@ public class Result extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            int score = extras.getInt("SCORE");
+            score = extras.getInt("SCORE");
 
 
         scoreLabel.setText(getString(R.string.score,score));
@@ -41,6 +47,16 @@ public class Result extends AppCompatActivity {
         }
         }else{
             Log.e(TAG,"no intent found");
+        }
+
+        //write score to an internal file
+        File file = new File(getFilesDir(), "result.txt");
+        try {
+            outputStream = new FileOutputStream (file);
+            outputStream.write(score);
+            outputStream.close();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

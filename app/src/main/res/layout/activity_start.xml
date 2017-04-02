@@ -34,7 +34,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginLeft="152dp"
-        app:layout_constraintVertical_bias="0.517" />
+        app:layout_constraintVertical_bias="0.464" />
 
     <Button
         android:layout_width="wrap_content"
@@ -44,10 +44,33 @@
         tools:layout_constraintTop_creator="1"
         tools:layout_constraintRight_creator="1"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="75dp"
+        android:layout_marginTop="38dp"
         app:layout_constraintTop_toBottomOf="@+id/superman"
         tools:layout_constraintLeft_creator="1"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintHorizontal_bias="0.501" />
+        app:layout_constraintHorizontal_bias="0.501"
+        android:id="@+id/button3" />
+
+    <Button
+        android:id="@+id/storyLineButton"
+        android:onClick="startStory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/switchstoryline"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="28dp"
+        app:layout_constraintTop_toBottomOf="@+id/button3" />
+
+    <Button
+        android:id="@+id/shareStoryButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="startShareStory"
+        android:text="@string/share_story"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="22dp"
+        app:layout_constraintTop_toBottomOf="@+id/storyLineButton" />
 
 </android.support.constraint.ConstraintLayout>

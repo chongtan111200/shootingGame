@@ -36,6 +36,7 @@ public class ControlButtonFragment extends Fragment {
         rightButton=(Button) v.findViewById(R.id.right_button);
         downButton=(Button) v.findViewById(R.id.down_button);
 
+        //changed the direction by passing the direction integer, it represents the direction
         leftButton.setOnClickListener(
                 new Button.OnClickListener() {
                     public void onClick(View v) {
